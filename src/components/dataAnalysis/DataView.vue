@@ -15,40 +15,49 @@
 </template>
 
 <script>
+import { getDataview } from '@/api'
 export default {
     data() {
         return {
 
         }
     },
+    
     methods: {
         drawCharts(legend, xAxis, series) {
             let chart1 = this.$echarts.init(document.getElementById('main2'))
-            let option = {
-                title:
-                    { text: '大标题哦' },
-                tooltip: {
-                    trigger: 'axis'
-                },
-                legend: {
-                    data: legend
-                },
+            let option1 = {
+                title: { text: '大标题2' },
+                tooltip: {},
+                legend: {data: legend},
                 xAxis: {
+                    type: 'category',
                     data: xAxis
                 },
                 yAxis: {
-
+                    type: 'value',
                 },
                 series: series
-
             }
-        }
+            chart1.setOption(option1)
+        },
+    },
+    created() {
+        getDataview().then(res => {
+            //console.log('res', res.data.data);
+            if (res.data.status === 200) {
+                let { legend, xAxis, series } = res.data.data
+                this.drawCharts(legend, xAxis, series)
+            }
+        }).catch(err => {
+            throw err
+        })
     },
     mounted() {
         let dataChart = this.$echarts.init(document.getElementById('main1'))
         dataChart.setOption({
             title:
-                { text: '大标题哦' },
+                { text: '大标题1' },
             tooltip: {
 
             },
@@ -82,7 +91,7 @@ export default {
         width: 50%;
 
         #main1,
-        #main1 {
+        #main2 {
             height: 500px;
         }
     }

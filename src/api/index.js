@@ -74,3 +74,10 @@ export function infoDel(id) {
         url: `/info/${id}`,
     })
 }
+//数据概览中的数据
+export function getDataview() {
+    return service({
+        method:'get',
+        url:'/dataview'
+    })
+}
