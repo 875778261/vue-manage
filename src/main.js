@@ -12,6 +12,14 @@ Vue.prototype.service = service
 Vue.config.productionTip = false
 Vue.prototype.$echarts = echarts
 Vue.use(ElementUI);
+router.beforeEach((to,from,next)=>{
+  if (!localStorage.getItem('username')) {
+    if (to.path!=='/login') {
+      next('/login')
+    }else next()
+  }
+  next()
+})
 new Vue({
   render: h => h(App),
   router
