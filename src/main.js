@@ -7,6 +7,7 @@ import 'font-awesome/css/font-awesome.min.css'
 import router from './router'
 import service from './service'
 import echarts from 'echarts'
+
 Vue.prototype.service = service
 //Vue.prototype.axios = axios
 Vue.config.productionTip = false

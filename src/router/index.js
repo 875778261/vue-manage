@@ -141,6 +141,6 @@ const router = new aa({
             redirect: '/404',
         }
     ],
-    mode: 'history'
+    //mode: 'history'
 })
 export default router
