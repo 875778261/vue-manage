@@ -6,9 +6,10 @@ const service = axios.create({
     //配置baseUrl基础路径，就需要配置对应的代理
     //vue.config.js中配置代理
 
-    //baseURL: '/api',//baseURL会自动加载请求地址上，提高开发效率
+    baseURL: '/api',
+    //baseURL会自动加载请求地址上，提高开发效率
 
-    baseURL: './index.html',
+    //baseURL: './index.html',
     //baseURL:'http://1.116.64.64:5004/api2/',
     //baseURL: 'CODE_Space/vue-learn/v2p/p_1/dist',
     timeout: 5000//超时停止
@@ -20,7 +21,7 @@ const service = axios.create({
 service.interceptors.request.use((config) => {
     //在发送请求之前要做的事情（获取并设置token）
     config.headers['token'] = getToken('token')
-    config.url = 'http://1.116.64.64:5004/api2' + config.url
+    //config.url = 'http://1.116.64.64:5004/api2' + config.url
 
 
     return config
